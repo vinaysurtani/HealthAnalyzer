@@ -130,7 +130,7 @@ Dinner: Baked salmon with sweet potato and romaine lettuce salad
 ### Academic Validation
 - **Cross-validation**: 2.4% accuracy variance (low overfitting)
 - **Robustness**: 100% accuracy on misspelled foods
-- **False Positive Rate**: 20% on unseen foods (acceptable threshold)
+- **False Positive Rate**: 20% on unseen foods
 
 ## 🛠️ Development
 
@@ -189,26 +189,11 @@ This system is designed for academic research in:
 - **Machine Learning**: Food classification and NLP
 - **Human-Computer Interaction**: Natural language nutrition interfaces
 
-### Citation
-If you use this system in research, please cite:
-```
-Daily Nutrition Analyzer: An AI-Powered System for Automated Dietary Assessment
-with Population Health Integration and Evidence-Based Recommendations
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -230,16 +215,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Check the [Issues](link-to-issues) page for known problems
 - Create a new issue for bugs or feature requests
 - Review the evaluation logs in `evaluation_logs/` for debugging
-
-## 🔮 Future Roadmap
-
-- **Photo Food Logging**: Upload meal photos for automatic recognition
-- **Barcode Scanning**: Instant nutrition data for packaged foods
-- **Voice Input**: "Hey app, I ate chicken and rice"
-- **Mobile App**: React Native or Flutter implementation
-- **Micronutrient Tracking**: Vitamins, minerals, fiber analysis
-- **Integration APIs**: Fitbit, Apple Health, MyFitnessPal sync
-
----
-
-**Built with ❤️ for better nutrition and health outcomes**
