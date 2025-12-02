@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+evaluation_logs/*.json
+
+# Model Files (optional - comment out if you want to include)
+models/*.pkl
+*.pkl
+
+# FAISS Index Files (regenerated on first run)
+faiss_index.bin
+documents.pkl
+
+# Temporary Files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+docs/_build/
+
+# Streamlit
+.streamlit/
+
+# Large datasets (keep only clean version)
+data/nutrition_db_full_*.csv
+data/nutrition_db_relaxed_*.csv
+data/nutrition_db_ultimate.csv
+data/*_report.md
+
+# Expert validation data (may contain sensitive info)
+expert_validation/*.json

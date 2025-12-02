@@ -1,0 +1,69 @@
+display_name,usda_name,calories_per_100g,protein_g,carbs_g,fat_g,serving_size_g,serving_description
+Bread,bread whole-wheat commercially prepared,254.0,12.3,43.1,3.55,100,100g
+White Bread,bread white commercially prepared,270.0,9.43,49.2,3.59,100,100g
+Whole Wheat Bread,bread whole-wheat commercially prepared,254.0,12.3,43.1,3.55,100,100g
+Toast,bread whole-wheat commercially prepared,254.0,12.3,43.1,3.55,100,100g
+Whole Wheat Toast,bread whole-wheat commercially prepared,254.0,12.3,43.1,3.55,100,100g
+Eggs,eggs grade a large egg whole,148.0,12.4,0.96,9.96,100,100g
+Egg,eggs grade a large egg whole,148.0,12.4,0.96,9.96,100,100g
+Scrambled Eggs,eggs grade a large egg whole,148.0,12.4,0.96,9.96,100,100g
+Boiled Eggs,eggs grade a large egg whole,148.0,12.4,0.96,9.96,100,100g
+Fried Eggs,eggs grade a large egg whole,148.0,12.4,0.96,9.96,100,100g
+Chicken,chicken breast boneless skinless raw,235.0,22.525,-0.368,1.934,100,100g
+Chicken Breast,chicken breast boneless skinless raw,235.0,22.525,-0.368,1.934,100,100g
+Grilled Chicken,chicken breast boneless skinless raw,235.0,22.525,-0.368,1.934,100,100g
+Chicken Thigh,chicken thigh boneless skinless raw,235.0,18.6125,-0.406,7.916,100,100g
+Beef,beef ground 90% lean meat / 10% fat raw,235.0,18.15625,0.0,12.85,100,100g
+Ground Beef,beef ground 90% lean meat / 10% fat raw,235.0,18.15625,0.0,12.85,100,100g
+Steak,beef ribeye steak boneless choice raw,235.0,18.74375,-0.30625,20.04,100,100g
+Tuna,fish tuna light canned in water drained solids,90.0,19.0,0.08,0.94,100,100g
+Rice,rice white long grain unenriched raw,330.0,7.03885,80.31315,1.033,100,100g
+Brown Rice,rice brown long grain unenriched raw,330.0,7.25305,76.68795,3.306,100,100g
+White Rice,rice white long grain unenriched raw,330.0,7.03885,80.31315,1.033,100,100g
+Milk,milk whole 3.25% milkfat with added vitamin d,60.0,3.28,4.67,3.2,100,100g
+Whole Milk,milk whole 3.25% milkfat with added vitamin d,60.0,3.28,4.67,3.2,100,100g
+Skim Milk,milk nonfat fluid with added vitamin a and vitamin d fat free or skim,34.0,3.43,4.89,0.08,100,100g
+2% Milk,milk reduced fat fluid 2% milkfat with added vitamin a and vitamin d,50.0,3.35,4.91,1.9,100,100g
+Yogurt,yogurt greek plain nonfat,61.0,10.3,3.64,0.37,100,100g
+Greek Yogurt,yogurt greek plain nonfat,61.0,10.3,3.64,0.37,100,100g
+Plain Yogurt,yogurt greek plain nonfat,61.0,10.3,3.64,0.37,100,100g
+Cheese,cheese cheddar,408.0,23.3,2.44,34.0,100,100g
+Cheddar Cheese,cheese cheddar,408.0,23.3,2.44,34.0,100,100g
+Mozzarella,cheese mozzarella low moisture part-skim,298.0,23.7,4.44,20.4,100,100g
+Butter,butter stick salted,106.0,0.0,0.0,82.6,100,100g
+Coconut Oil,oil coconut,833.0,0.0,0.84,99.1,100,100g
+Cherry Tomatoes,tomatoes grape raw,27.0,0.83,5.51,0.63,100,100g
+Grape Tomatoes,tomatoes grape raw,27.0,0.83,5.51,0.63,100,100g
+Broccoli,broccoli raw,32.0,2.57,6.29,0.34,100,100g
+Carrots,carrots mature raw,29.8,0.94125,10.26755,0.3506,100,100g
+Lettuce,lettuce cos or romaine raw,17.0,1.24,3.24,0.26,100,100g
+Romaine Lettuce,lettuce cos or romaine raw,17.0,1.24,3.24,0.26,100,100g
+Kale,kale raw,35.0,2.92,4.42,1.49,100,100g
+Sweet Potato,sweet potatoes orange flesh without skin raw,66.7,1.578125,17.327875,0.375,100,100g
+Sweet Potatoes,sweet potatoes orange flesh without skin raw,66.7,1.578125,17.327875,0.375,100,100g
+Bananas,bananas ripe and slightly ripe raw,97.0,0.74,23.0,0.29,100,100g
+Banana,bananas ripe and slightly ripe raw,97.0,0.74,23.0,0.29,100,100g
+Apples,apples red delicious with skin raw,62.0,0.19,14.8,0.21,100,100g
+Apple,apples red delicious with skin raw,62.0,0.19,14.8,0.21,100,100g
+Oranges,oranges raw navels,47.0,0.91,11.8,0.15,100,100g
+Orange,oranges raw navels,47.0,0.91,11.8,0.15,100,100g
+Strawberries,strawberries raw,31.0,0.64,7.63,0.22,100,100g
+Blueberries,blueberries raw,145.0,0.703125,14.571775,0.3063,100,100g
+Grapes,grapes red seedless raw,66.7,0.914375,20.196825,0.1638,100,100g
+Almonds,nuts almonds whole raw,590.0,21.45038,20.03462,51.09,100,100g
+Walnuts,nuts walnuts english halves raw,590.0,14.5644,10.9096,69.74,100,100g
+Peanuts,peanuts raw,590.0,23.205,26.498,43.28,100,100g
+Cashews,nuts cashew nuts raw,590.0,17.4423,36.2887,38.86,100,100g
+Peanut Butter,peanut butter smooth style with salt,597.0,22.5,22.3,51.1,100,100g
+Oats,oats whole grain rolled old fashioned,330.0,13.49645,68.65755,5.89,100,100g
+Oatmeal,oats whole grain rolled old fashioned,330.0,13.49645,68.65755,5.89,100,100g
+Beans,beans black canned sodium added drained and rinsed,145.0,6.9125,19.8135,1.273,100,100g
+Black Beans,beans black canned sodium added drained and rinsed,145.0,6.9125,19.8135,1.273,100,100g
+Chickpeas,chickpeas garbanzo beans bengal gram canned sodium added drained and rinsed,145.0,7.01875,20.32025,3.096,100,100g
+Lentils,lentils dry,145.0,23.56875,62.17125,1.925,100,100g
+Pasta,proximates sauce pasta hunts original canned spaghetti sauce al1 - nfy0904yx,330.0,0.0,0.0,0.82,100,100g
+Salad,lettuce cos or romaine raw,17.0,1.24,3.24,0.26,100,100g
+Sandwich,bread white commercially prepared,270.0,9.43,49.2,3.59,100,100g
+Burger,beef ground 80% lean 20% fat raw,235.0,0.0,0.0,18.61,100,100g
+Salmon,fish haddock raw,74.0,16.3,0.0,0.45,100,100g
+Fish,fish haddock raw,74.0,16.3,0.0,0.45,100,100g
