@@ -1,0 +1,196 @@
+{
+  "test_cases": [
+    {
+      "name": "Balanced Diet",
+      "nutrition": {
+        "calories": 450,
+        "protein": 35,
+        "carbs": 45,
+        "fat": 8
+      },
+      "gemini": {
+        "response": "This intake of 450 calories is significantly below the daily guideline of 1800-2500 calories, suggesting a severe caloric deficit. While 35g of protein is provided, it constitutes a very high 31.1% of these limited calories, exceeding the recommended 10-15%. It is crucial to substantially increase overall caloric intake to meet daily energy needs and achieve a more balanced macronutrient distribution.",
+        "provider": "Gemini + RAG",
+        "response_time": 10.40780520439148,
+        "success": true,
+        "word_count": 60,
+        "char_count": 404,
+        "quality_score": {
+          "total": 66.0,
+          "breakdown": {
+            "nutrition_coverage": 10.0,
+            "actionable_advice": 25,
+            "appropriate_length": 20,
+            "evidence_based": 5,
+            "personalization": 6
+          }
+        }
+      },
+      "ollama": {
+        "response": "Your 450 calories are below WHO recommendations (2200-2500 for males). Consider adding nutrient-dense snacks. Macronutrient balance looks good per WHO guidelines (protein: 31.1%, carbs: 40.0%).",
+        "provider": "Rule-based + RAG",
+        "response_time": 11.587624311447144,
+        "success": true,
+        "word_count": 25,
+        "char_count": 193,
+        "quality_score": {
+          "total": 86.0,
+          "breakdown": {
+            "nutrition_coverage": 25.0,
+            "actionable_advice": 25,
+            "appropriate_length": 20,
+            "evidence_based": 10,
+            "personalization": 6
+          }
+        }
+      }
+    },
+    {
+      "name": "High Protein",
+      "nutrition": {
+        "calories": 520,
+        "protein": 45,
+        "carbs": 15,
+        "fat": 28
+      },
+      "gemini": {
+        "response": "Your current intake of 520 calories is substantially lower than the recommended daily range of 1800-2500 calories for adults. Additionally, protein comprises a very high 34.6% of your total calories (45g protein x 4 cal/g = 180 calories from protein; 180/520 = 34.6%), exceeding the guideline of 10-15%. You also lack information on fiber, which is crucial for adults to consume 25-35g daily.\n\n**Recommendation:** Focus on significantly increasing your overall caloric intake by incorporating more complex carbohydrates and healthy fats, alongside a variety of fruits and vegetables to boost fiber.",
+        "provider": "Gemini + RAG",
+        "response_time": 4.8778698444366455,
+        "success": true,
+        "word_count": 90,
+        "char_count": 598,
+        "quality_score": {
+          "total": 70.0,
+          "breakdown": {
+            "nutrition_coverage": 15.0,
+            "actionable_advice": 25,
+            "appropriate_length": 15,
+            "evidence_based": 5,
+            "personalization": 10
+          }
+        }
+      },
+      "ollama": {
+        "response": "Based on the provided nutrition intake and guidelines, it appears that this individual's diet is within a relatively healthy range, but there are some areas for improvement. The high calorie intake of 520 cal per day may be excessive, particularly if the goal is to lose weight or maintain weight loss. One recommendation would be to consider reducing the calorie intake by 100-200 calories to meet the guidelines and potentially support a healthier weight management plan.",
+        "provider": "Ollama + RAG",
+        "response_time": 2.8480892181396484,
+        "success": true,
+        "word_count": 76,
+        "char_count": 473,
+        "quality_score": {
+          "total": 63.0,
+          "breakdown": {
+            "nutrition_coverage": 10.0,
+            "actionable_advice": 25,
+            "appropriate_length": 20,
+            "evidence_based": 5,
+            "personalization": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "Low Calorie",
+      "nutrition": {
+        "calories": 180,
+        "protein": 8,
+        "carbs": 35,
+        "fat": 2
+      },
+      "gemini": {
+        "response": "The provided intake of 180 calories is substantially lower than the adult daily recommendation of 1800-2500 calories, suggesting it represents a single snack or a small portion of a meal, rather than a full day's intake. To meet comprehensive WHO dietary guidelines, this item alone would also need to be supplemented significantly to achieve the daily 25-35g fiber recommendation (which is not specified here but is crucial) and ensure a balanced intake of all macronutrients. A key recommendation is to incorporate more nutrient-dense whole foods, such as fruits, vegetables, and whole grains, throughout the day to increase overall calorie intake, provide essential fiber, and achieve a more balanced nutritional profile.",
+        "provider": "Gemini + RAG",
+        "response_time": 6.0789361000061035,
+        "success": true,
+        "word_count": 110,
+        "char_count": 724,
+        "quality_score": {
+          "total": 61.0,
+          "breakdown": {
+            "nutrition_coverage": 15.0,
+            "actionable_advice": 25,
+            "appropriate_length": 5,
+            "evidence_based": 10,
+            "personalization": 6
+          }
+        }
+      },
+      "ollama": {
+        "response": "Based on the provided nutrition intake of 180 calories, 8g protein, 35g carbs, and 2g fat, it appears to be a very low-calorie diet. In comparison to the general adult dietary guidelines, this meal plan falls short in providing adequate amounts of essential nutrients such as fiber (25-35g per day) and healthy fats for optimal health.\n\nOne recommendation that aligns with the WHO Dietary Guidelines is increasing the protein intake to 10-15 grams per day to support overall health and muscle function. Adding more calories, such as whole grains or lean proteins, can also help increase energy levels and support nutrient absorption.",
+        "provider": "Ollama + RAG",
+        "response_time": 3.207047939300537,
+        "success": true,
+        "word_count": 102,
+        "char_count": 633,
+        "quality_score": {
+          "total": 73.0,
+          "breakdown": {
+            "nutrition_coverage": 30.0,
+            "actionable_advice": 25,
+            "appropriate_length": 5,
+            "evidence_based": 10,
+            "personalization": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "High Calorie",
+      "nutrition": {
+        "calories": 850,
+        "protein": 25,
+        "carbs": 95,
+        "fat": 35
+      },
+      "gemini": {
+        "response": "This intake of 850 calories is significantly below the recommended 1800-2500 calories for adults, indicating a severe energy deficit. While protein comprises an appropriate percentage of total calories (11.76%), the absolute amount of 25g is likely insufficient for an adult's minimum needs. A primary recommendation is to substantially increase overall calorie intake from nutrient-dense foods to meet daily energy and protein requirements.",
+        "provider": "Gemini + RAG",
+        "response_time": 5.701912879943848,
+        "success": true,
+        "word_count": 62,
+        "char_count": 441,
+        "quality_score": {
+          "total": 66.0,
+          "breakdown": {
+            "nutrition_coverage": 10.0,
+            "actionable_advice": 25,
+            "appropriate_length": 20,
+            "evidence_based": 5,
+            "personalization": 6
+          }
+        }
+      },
+      "ollama": {
+        "response": "This nutrition intake falls within a relatively moderate range, meeting the calorie and protein requirements for adults. However, it is slightly below the recommended daily intake of calories (1800-2500) and fiber (25-35g). To better align with the guidelines, increasing the protein intake to 12% of total calories or adding more fruits and vegetables could help meet the higher fiber requirement.",
+        "provider": "Ollama + RAG",
+        "response_time": 2.7052910327911377,
+        "success": true,
+        "word_count": 60,
+        "char_count": 398,
+        "quality_score": {
+          "total": 76.0,
+          "breakdown": {
+            "nutrition_coverage": 15.0,
+            "actionable_advice": 25,
+            "appropriate_length": 20,
+            "evidence_based": 10,
+            "personalization": 6
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "gemini": {
+      "avg_score": 65.75,
+      "avg_time": 6.766631007194519,
+      "success_rate": 100.0
+    },
+    "ollama": {
+      "avg_score": 74.5,
+      "avg_time": 5.087013125419617,
+      "success_rate": 100.0
+    }
+  }
+}
