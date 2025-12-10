@@ -16,26 +16,14 @@ This guide covers different ways to deploy the Daily Nutrition Analyzer applicat
 git clone <repository-url>
 cd nutrition-analyzer
 
-# Run setup script
-python setup.py
-
-# Start application
-streamlit run app.py
-```
-
-### Manual Setup
-```bash
 # Install dependencies
 pip install -r requirements.txt
 
-# Copy environment file
+# Copy environment file (optional)
 cp .env.example .env
-# Edit .env to add OpenAI API key (optional)
+# Edit .env to add Gemini API key for enhanced AI features
 
-# Test installation
-python test_installation.py
-
-# Run application
+# Start application
 streamlit run app.py
 ```
 
@@ -55,7 +43,7 @@ streamlit run app.py
 4. **Add secrets** (optional):
    ```toml
    # In Streamlit Cloud secrets
-   OPENAI_API_KEY = "your_api_key_here"
+   GEMINI_API_KEY = "your_gemini_api_key_here"
    ```
 
 5. **Deploy** - Your app will be available at `https://your-app-name.streamlit.app`
@@ -79,7 +67,7 @@ streamlit run app.py
 
 4. **Set environment variables**:
    ```bash
-   heroku config:set OPENAI_API_KEY=your_api_key_here
+   heroku config:set GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 5. **Deploy**:
@@ -114,204 +102,93 @@ streamlit run app.py
    docker run -p 8501:8501 nutrition-analyzer
    ```
 
-### AWS EC2 Deployment
-
-1. **Launch EC2 instance** (Ubuntu 20.04 LTS)
-
-2. **Connect and setup**:
-   ```bash
-   # Update system
-   sudo apt update && sudo apt upgrade -y
-   
-   # Install Python and Git
-   sudo apt install python3 python3-pip git -y
-   
-   # Clone repository
-   git clone <repository-url>
-   cd nutrition-analyzer
-   
-   # Install dependencies
-   pip3 install -r requirements.txt
-   ```
-
-3. **Setup systemd service**:
-   ```bash
-   sudo nano /etc/systemd/system/nutrition-analyzer.service
-   ```
-   
-   ```ini
-   [Unit]
-   Description=Daily Nutrition Analyzer
-   After=network.target
-   
-   [Service]
-   Type=simple
-   User=ubuntu
-   WorkingDirectory=/home/ubuntu/nutrition-analyzer
-   ExecStart=/usr/bin/python3 -m streamlit run app.py --server.port=8501 --server.address=0.0.0.0
-   Restart=always
-   
-   [Install]
-   WantedBy=multi-user.target
-   ```
-
-4. **Start service**:
-   ```bash
-   sudo systemctl daemon-reload
-   sudo systemctl enable nutrition-analyzer
-   sudo systemctl start nutrition-analyzer
-   ```
-
-5. **Setup nginx reverse proxy** (optional):
-   ```bash
-   sudo apt install nginx -y
-   sudo nano /etc/nginx/sites-available/nutrition-analyzer
-   ```
-   
-   ```nginx
-   server {
-       listen 80;
-       server_name your-domain.com;
-       
-       location / {
-           proxy_pass http://localhost:8501;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection 'upgrade';
-           proxy_set_header Host $host;
-           proxy_cache_bypass $http_upgrade;
-       }
-   }
-   ```
-
 ## 🔧 Configuration
 
 ### Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `OPENAI_API_KEY` | OpenAI API key for enhanced AI features | No |
+| `GEMINI_API_KEY` | Gemini API key for enhanced AI features | No |
 | `STREAMLIT_SERVER_PORT` | Port for Streamlit server | No (default: 8501) |
-| `DEBUG_MODE` | Enable debug logging | No (default: false) |
 
-### Performance Optimization
+### AI Provider Fallback Chain
+1. **Gemini API** (if key provided) - Cloud AI with high quality
+2. **Ollama** (if running locally) - Local AI processing
+3. **Rule-based** - Deterministic fallback using WHO guidelines
 
-1. **Enable caching**:
-   ```python
-   # Already implemented with @st.cache_resource
-   ```
+## 🛠️ Academic Evaluation
 
-2. **Optimize database loading**:
-   ```python
-   # Use smaller database for faster loading
-   # Current: 68 foods (optimized)
-   ```
+### Running Evaluation Scripts
+```bash
+# Train USDA nutrition database system
+python evaluation/training_script.py
 
-3. **Configure memory limits**:
-   ```bash
-   # For Docker
-   docker run -m 512m nutrition-analyzer
-   ```
+# Test system performance
+python evaluation/comprehensive_evaluation.py
+
+# Generate AI comparison visualizations
+export PYTHONPATH=$(pwd) && python evaluation/visualization_script.py
+
+# Validate system robustness
+python evaluation/overfitting_test.py
+```
 
 ## 🔒 Security Considerations
 
 ### API Keys
 - Never commit API keys to version control
 - Use environment variables or secrets management
-- Rotate keys regularly
+- Gemini API has generous free tier limits
 
 ### Data Privacy
 - No user data is stored permanently
 - Session data is cleared on browser close
 - NHANES data is anonymized population statistics
 
-### Network Security
-- Use HTTPS in production
-- Configure firewall rules
-- Regular security updates
+## 📊 Performance Metrics
 
-## 📊 Monitoring
+### System Performance
+- **Food Detection**: 96.6% F1 score
+- **Response Time**: 0.12s - 6.29s depending on AI provider
+- **Database**: 68 curated foods for optimal speed
+- **Memory Usage**: ~200MB baseline
 
-### Health Checks
-```bash
-# Check if app is running
-curl http://localhost:8501/_stcore/health
-
-# Check specific functionality
-python test_installation.py
-```
-
-### Logging
-```python
-# Enable debug logging in .env
-DEBUG_MODE=true
-LOG_LEVEL=DEBUG
-```
-
-### Performance Metrics
-- Response time: < 2 seconds for typical queries
-- Memory usage: ~200MB baseline
-- CPU usage: Low (mostly I/O bound)
+### AI Provider Performance
+- **Gemini**: 72.2/100 quality, 6.29s avg response time
+- **Ollama**: 66.0/100 quality, 4.09s avg response time
+- **Rule-based**: Instant response, WHO guideline-based
 
 ## 🚨 Troubleshooting
 
 ### Common Issues
 
-**Port already in use**:
-```bash
-# Kill existing Streamlit processes
-pkill -f streamlit
-# Or use different port
-streamlit run app.py --server.port=8502
-```
+**"No recognizable foods found"**:
+- Use simpler food names (e.g., "chicken" vs "grilled chicken breast")
+- Check spelling of food items
+- System supports 68 common foods
 
 **Module not found**:
 ```bash
-# Reinstall dependencies
 pip install -r requirements.txt --force-reinstall
 ```
 
-**Database errors**:
-```bash
-# Verify data files exist
-ls -la data/
-# Re-download if necessary
-```
-
-**Memory issues**:
-```bash
-# Clear Streamlit cache
-streamlit cache clear
-```
-
-### Performance Issues
-
-**Slow food matching**:
-- Check database size (should be ~68 foods)
-- Verify text preprocessing efficiency
-- Monitor regex performance
-
 **AI timeouts**:
-- Check OpenAI API key validity
-- Verify internet connection
-- Use fallback mode if needed
+- Check internet connection for Gemini API
+- System automatically falls back to Ollama then rule-based
+- No API key required for basic functionality
 
-## 📈 Scaling
+**Port already in use**:
+```bash
+streamlit run app.py --server.port=8502
+```
 
-### Horizontal Scaling
-- Deploy multiple instances behind load balancer
-- Use session affinity for user state
-- Consider Redis for shared caching
+## 📈 Academic Applications
 
-### Database Optimization
-- Current database is optimized for speed
-- Consider PostgreSQL for larger datasets
-- Implement database connection pooling
-
-### CDN Integration
-- Serve static assets via CDN
-- Cache nutrition guidelines
-- Optimize image delivery
+This deployment supports research in:
+- **Nutrition Informatics**: Automated dietary assessment
+- **AI Comparison Studies**: Multi-provider LLM analysis
+- **Population Health**: NHANES demographic analysis
+- **Clinical Decision Support**: Medical nutrition integration
 
 ---
 

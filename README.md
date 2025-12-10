@@ -14,12 +14,7 @@ A comprehensive web application that analyzes daily food intake and provides per
 - **Population Health Comparison**: Compare your intake with NHANES demographic data
 - **Personalized Meal Recommendations**: Get specific food suggestions based on nutrition gaps
 - **Clinical Notes Integration**: Analyze medical nutrition recommendations
-- **Risk Assessment**: Health risk profiling based on population patterns
-
-### Research & Validation
-- **Machine Learning Classification**: Random Forest model with 96.3% accuracy
-- **Comprehensive Evaluation System**: Performance metrics and overfitting analysis
-- **Dynamic Visualizations**: Real-time performance charts and nutrition breakdowns
+- **AI Provider Comparison**: Compare Gemini vs Ollama performance for research analysis
 
 ## 🏗️ Architecture
 
@@ -32,19 +27,16 @@ nutrition-analyzer/
 │   ├── meal_recommender.py        # Personalized meal suggestions
 │   ├── nhanes_analyzer.py         # Population health analysis
 │   ├── clinical_parser.py         # Medical notes processing
-│   ├── food_classifier.py         # ML training script
-│   ├── rag_system.py              # RAG implementation
-│   └── healthcare_rag_framework.py # Reusable RAG framework
+│   └── rag_system.py              # RAG implementation
 ├── data/                          # Databases and guidelines
 │   ├── nutrition_db_clean.csv     # Curated 68-food database
 │   ├── nhanes_demographics.csv    # Population health data
 │   └── nutrition_guidelines.txt   # Evidence base for RAG
-├── evaluation/                    # Performance testing
-│   ├── comprehensive_evaluation.py # System evaluation
-│   ├── benchmark_system.py        # Performance benchmarks
-│   └── dynamic_visualizer.py      # Real-time visualizations
-├── models/                        # Trained ML models
-│   └── food_classifier.pkl        # Random Forest classifier
+├── evaluation/                    # Academic evaluation scripts
+│   ├── training_script.py         # USDA database training
+│   ├── comprehensive_evaluation.py # System performance testing
+│   ├── visualization_script.py    # LLM comparison visualizations
+│   └── overfitting_test.py        # System validation
 └── requirements.txt               # Python dependencies
 ```
 
@@ -53,7 +45,7 @@ nutrition-analyzer/
 ### Prerequisites
 - Python 3.8+
 - pip package manager
-- OpenAI API key (optional, has fallback)
+- Gemini API key (optional, has Ollama fallback)
 
 ### Installation
 
@@ -71,7 +63,7 @@ nutrition-analyzer/
 3. **Set up environment** (optional):
    ```bash
    cp .env.example .env
-   # Edit .env and add your OpenAI API key for enhanced AI features
+   # Edit .env and add your Gemini API key for enhanced AI features
    ```
 
 4. **Run the application**:
@@ -97,7 +89,6 @@ Dinner: Baked salmon with sweet potato and romaine lettuce salad
 - AI-generated evidence-based summary
 - Personalized meal recommendations
 - Population health comparison
-- Risk assessment
 
 ## 🔬 Technical Details
 
@@ -109,15 +100,14 @@ Dinner: Baked salmon with sweet potato and romaine lettuce salad
 
 ### AI & Machine Learning
 - **RAG System**: FAISS vector database with SentenceTransformer embeddings
-- **Classification**: Random Forest with TF-IDF vectorization (96.3% accuracy)
-- **LLM Integration**: OpenAI GPT with fallback to local processing
+- **LLM Integration**: Gemini API with Ollama fallback
 - **Evidence Base**: WHO, USDA guidelines, clinical nutrition research
+- **Provider Comparison**: Gemini vs Ollama performance analysis
 
 ### Population Health Analytics
 - **Data Source**: NHANES (National Health and Nutrition Examination Survey)
 - **Demographics**: Age and gender-specific comparisons
 - **Sample Sizes**: 1,000-1,500 people per demographic group
-- **Risk Modeling**: Population-based health risk assessment
 
 ## 📊 Performance Metrics
 
@@ -127,26 +117,26 @@ Dinner: Baked salmon with sweet potato and romaine lettuce salad
 - **Processing Time**: 0.12s (single food) to 0.67s (complex meals)
 - **Database Coverage**: 68 foods across 5 major categories
 
-### Academic Validation
-- **Cross-validation**: 2.4% accuracy variance (low overfitting)
-- **Robustness**: 100% accuracy on misspelled foods
-- **False Positive Rate**: 20% on unseen foods
+### AI Provider Comparison
+- **Gemini**: 72.2/100 quality score, 6.29s response time
+- **Ollama**: 66.0/100 quality score, 4.09s response time
+- **Both**: 100% success rate, evidence-based responses
 
 ## 🛠️ Development
 
-### Running Tests
+### Running Academic Evaluation Scripts
 ```bash
+# Train USDA nutrition database system
+python evaluation/training_script.py
+
 # Comprehensive system evaluation
 python evaluation/comprehensive_evaluation.py
 
-# Performance benchmarks
-python evaluation/benchmark_system.py
+# AI provider comparison with visualizations
+export PYTHONPATH=/path/to/nutrition-analyzer && python evaluation/visualization_script.py
 
-# Generate visualizations
-python evaluation/dynamic_visualizer.py
-
-# Train ML classifier
-python src/food_classifier.py
+# System validation and overfitting analysis
+python evaluation/overfitting_test.py
 ```
 
 ### Adding New Foods
@@ -154,31 +144,20 @@ python src/food_classifier.py
 2. Follow the format: `display_name,usda_name,calories_per_100g,protein_g,carbs_g,fat_g,serving_size_g,serving_description`
 3. Restart the application to reload the database
 
-### Extending RAG System
-```python
-from src.healthcare_rag_framework import HealthcareRAGFramework
-
-# Create domain-specific RAG system
-rag = HealthcareRAGFramework(
-    domain="cardiology",
-    guidelines_path="cardiology_guidelines.txt"
-)
-```
-
 ## 🔧 Configuration
 
 ### Environment Variables
 ```bash
 # .env file
-OPENAI_API_KEY=your_api_key_here  # Optional
-STREAMLIT_SERVER_PORT=8501        # Default port
+GEMINI_API_KEY=your_gemini_api_key_here  # Optional
+STREAMLIT_SERVER_PORT=8501               # Default port
 ```
 
 ### Customization Options
 - **Target Calories**: Adjustable in sidebar (1200-3000)
-- **Dietary Preferences**: Vegetarian, vegan, low-carb, high-protein
 - **Demographics**: Age and gender for population comparison
 - **Clinical Integration**: Paste medical nutrition notes
+- **AI Provider**: Automatic Gemini → Ollama → Rule-based fallback
 
 ## 📈 Research Applications
 
@@ -186,12 +165,25 @@ This system is designed for academic research in:
 - **Nutrition Informatics**: Automated dietary assessment
 - **Population Health**: Demographic nutrition analysis  
 - **Clinical Decision Support**: Medical nutrition therapy
-- **Machine Learning**: Food classification and NLP
+- **AI Comparison Studies**: LLM provider performance analysis
 - **Human-Computer Interaction**: Natural language nutrition interfaces
 
-## 📝 License
+## 📝 Academic Compliance
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Training Script (2%)
+- **File**: `evaluation/training_script.py`
+- **Function**: Trains USDA nutrition database system with TF-IDF matching
+- **Output**: Trained model with 92.6% nutrition accuracy on 68 foods
+
+### Testing Script (2%)
+- **File**: `evaluation/comprehensive_evaluation.py`
+- **Function**: Tests CleanFoodMatcher system used in production
+- **Output**: 96.6% F1 score, performance metrics, accuracy analysis
+
+### Visualization Script (1%)
+- **File**: `evaluation/visualization_script.py`
+- **Function**: Compares Gemini vs Ollama AI providers with charts
+- **Output**: Quality scores, response times, comparative visualizations
 
 ## Troubleshooting
 
@@ -206,12 +198,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Ensure all dependencies are installed: `pip install -r requirements.txt`
 - Check Python version compatibility (3.8+)
 
-**Slow performance**
-- Reduce input complexity
-- Check internet connection for AI features
-- Consider using local LLM fallback
+**Slow AI responses**
+- Check internet connection for Gemini API
+- System automatically falls back to Ollama then rule-based responses
 
 ### Support
-- Check the [Issues](link-to-issues) page for known problems
-- Create a new issue for bugs or feature requests
-- Review the evaluation logs in `evaluation_logs/` for debugging
+- Create issues for bugs or feature requests
+- All evaluation scripts include detailed logging for debugging
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

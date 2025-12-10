@@ -69,6 +69,8 @@ def main():
         age = st.number_input("Age", 18, 100, 30)
         gender = st.selectbox("Gender", ["Male", "Female"])
         
+
+        
         # Clinical notes section
         st.markdown("### 🏥 Clinical Notes (Optional)")
         clinical_notes = st.text_area(

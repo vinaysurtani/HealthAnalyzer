@@ -1,4 +1,4 @@
-import openai
+import google.generativeai as genai
 import requests
 from typing import List, Dict
 import os
@@ -9,11 +9,14 @@ load_dotenv()
 
 class NutritionSummarizer:
     def __init__(self):
-        openai.api_key = os.getenv('OPENAI_API_KEY')
+        genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
+        self.gemini_model = genai.GenerativeModel('gemini-2.5-flash')
         self.rag = NutritionRAG()
         
     def generate_summary(self, nutrition_data: List[Dict], totals: Dict, age: int = 30, gender: str = "Male") -> tuple[str, str, List[Dict]]:
         """Generate evidence-based nutrition summary using RAG + LLM"""
+        
+        print("🔍 DEBUG: Starting generate_summary with Gemini first...")
         
         # Get relevant guidelines from RAG system
         evidence_context = self.rag.get_evidence_based_context(nutrition_data, totals)
@@ -24,29 +27,29 @@ class NutritionSummarizer:
         # Prepare context for LLM
         foods_text = ", ".join([f"{item['food']} ({item['quantity']} serving)" for item in nutrition_data])
         
-        prompt = f"""Based on the following evidence-based nutrition guidelines, analyze this daily nutrition intake:
+        prompt = f"""Nutrition intake: {totals['calories']:.0f} cal, {totals['protein']:.0f}g protein, {totals['carbs']:.0f}g carbs, {totals['fat']:.0f}g fat.
 
-**EVIDENCE-BASED GUIDELINES:**
-{evidence_context}
+Guidelines: {evidence_context}
 
-**USER'S DAILY INTAKE:**
-Foods consumed: {foods_text}
-
-Daily totals:
-- Calories: {totals['calories']}
-- Protein: {totals['protein']}g
-- Carbohydrates: {totals['carbs']}g  
-- Fat: {totals['fat']}g
-
-Provide a 2-3 sentence summary that:
-1. Compares their intake to evidence-based guidelines
-2. Gives one specific, actionable recommendation
-3. Uses friendly, non-technical language
-4. Mentions the guideline source when relevant
-
-Keep it encouraging and practical."""
+Provide 2-3 sentences comparing this intake to the guidelines with one recommendation."""
         
-        # Try Ollama first (free local LLM)
+        # Try Gemini first (cloud LLM)
+        print("🔍 DEBUG: Trying Gemini first...")
+        try:
+            if os.getenv('GEMINI_API_KEY'):
+                print("🔍 DEBUG: Gemini API key found, making request...")
+                response = self.gemini_model.generate_content(prompt)
+                print(f"✅ DEBUG: Gemini response ({len(response.text)} chars): {response.text[:50]}...")
+                    
+                return response.text.strip(), "Gemini + RAG", evidence_sources
+            else:
+                print("❌ DEBUG: No Gemini API key found")
+        except Exception as e:
+            print(f"❌ DEBUG: Gemini API error: {e}")
+            pass
+        
+        # Try Ollama as fallback (local LLM)
+        print("🔍 DEBUG: Trying Ollama as fallback...")
         try:
             response = requests.post('http://localhost:11434/api/generate',
                 json={
@@ -57,27 +60,16 @@ Keep it encouraging and practical."""
                 timeout=10
             )
             if response.status_code == 200:
+                print("✅ DEBUG: Ollama response received successfully!")
                 return response.json()['response'].strip(), "Ollama + RAG", evidence_sources
-        except:
-            pass
-        
-        # Try OpenAI if Ollama fails
-        try:
-            if os.getenv('OPENAI_API_KEY'):
-                response = openai.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": "You are a friendly nutrition assistant who explains nutrition in simple terms."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    max_tokens=150,
-                    temperature=0.7
-                )
-                return response.choices[0].message.content.strip(), "OpenAI + RAG", evidence_sources
-        except:
+            else:
+                print(f"❌ DEBUG: Ollama failed with status: {response.status_code}")
+        except Exception as e:
+            print(f"❌ DEBUG: Ollama error: {e}")
             pass
             
         # Fallback summary if both LLMs fail
+        print("🔍 DEBUG: Using rule-based fallback...")
         return self._generate_fallback_summary(totals, evidence_context, age, gender), "Rule-based + RAG", evidence_sources
     
     def _generate_fallback_summary(self, totals: Dict, evidence_context: str = "", age: int = 30, gender: str = "Male") -> str:
